@@ -36,14 +36,22 @@ int main() {
     getline(inFile, MIN);
 
     //converting the data members to doubles
-    double ASTnum = stod(AST);
-    double STLnum = stod(STL);
-    double PTSnum = stod(PTS);
-    double MINnum = stod(MIN);
+
 
     cout << "Reading ../WNBAStats.csv…" << endl;
     //reads csv file while file is found
     while (!inFile.eof()) {
+        //getting the chosen 4 data members
+        getline(inFile, AST, ',');
+        getline(inFile, STL, ',');
+        getline(inFile, PTS, ',');
+        getline(inFile, MIN);
+
+        //converting the data members to doubles
+        double ASTnum = stod(AST);
+        double STLnum = stod(STL);
+        double PTSnum = stod(PTS);
+        double MINnum = stod(MIN);
         s.push_head(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the stack
         q.enqueue_tail(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the queue
         link.insertSorted(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the sorted linked list
@@ -60,7 +68,7 @@ int main() {
     outFile.close();
 
     cout << "Writing data in queue inserted at tail into queued.txt." << endl;
-    outFile.open("queued");
+    outFile.open("queued.txt");
     print = true;
     while (print) {
         outFile << q.print() << endl;//printing queue
@@ -69,7 +77,7 @@ int main() {
     outFile.close();
 
     cout << "Writing data in sorted linked list sorted by MINnum into sorted.txt." << endl;
-    outFile.open("sorted");
+    outFile.open("sorted.txt");
     link.print(outFile);//printing sorted linked list
     outFile.close();
 
