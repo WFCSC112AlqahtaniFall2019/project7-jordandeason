@@ -5,7 +5,6 @@
 #include"SortedLinkedList.h"
 #include"Data.h"
 #include"Stack.h"
-
 using namespace std;
 
 int main() {
@@ -57,7 +56,7 @@ int main() {
         link.insertSorted(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the sorted linked list
     }
 
-    cout << "Writing data in stack inserted at head into stacked.txt." << endl;
+    cout << "Writing data in stack inserted at head into stacked" << endl;
     bool print = true;
     while (print) {
         outFile << s.print() << endl;//printing stack
@@ -67,8 +66,8 @@ int main() {
     inFile.close();
     outFile.close();
 
-    cout << "Writing data in queue inserted at tail into queued.txt." << endl;
-    outFile.open("queued.txt");
+    cout << "Writing data in queue inserted at tail into queued" << endl;
+    outFile.open("queued");
     print = true;
     while (print) {
         outFile << q.print() << endl;//printing queue
@@ -76,10 +75,9 @@ int main() {
     }
     outFile.close();
 
-    cout << "Writing data in sorted linked list sorted by MINnum into sorted.txt." << endl;
-    outFile.open("sorted.txt");
+    cout << "Writing data in sorted linked list sorted by MINnum into sorted" << endl;
+    outFile.open("sorted");
     link.print(outFile);//printing sorted linked list
     outFile.close();
-
     return 0;
 }
