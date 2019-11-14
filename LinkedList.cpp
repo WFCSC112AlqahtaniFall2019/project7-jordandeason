@@ -1,63 +1,52 @@
-/* Class: LinkedList
- * Description: Very basic singly linked List class with single head 
- * class for use with Data object. It is meant to be inherited for
- * more complex linked lists.
- */
-
 #include "LinkedList.h"
 using namespace std;
 
 LinkedList::LinkedList() {
-    head = nullptr; // empty list
+    head = nullptr; //empty list
 }
 
-// copy constructor
-LinkedList::LinkedList(const LinkedList& list) {
-    // if list is not empty, perform deep copy
-    if(list.head) {
-        Node *curr, *listcurr;
-        // copy head node data
-        head = curr = new Node(list.head->item);
-        listcurr = list.head->next;
-        // loop over rest of nodes, copying data
-        while (listcurr != nullptr) {
-            curr = curr->next = new Node(listcurr->item);
-            listcurr = listcurr->next;
+LinkedList::LinkedList(const LinkedList &list) {//copy constructor
+    if (list.head) {//deep copy
+        Node *current, *currentList;
+        head = current = new Node(list.head->data);//copy head node
+        currentList = list.head->next;
+        while (currentList != nullptr) {//copies data
+            current = current->next = new Node(currentList->data);
+            currentList = currentList->next;
         }
     } else {
-        // if list is empty, create another empty list
-        head = nullptr;
+        head = nullptr;//creates empty list if list is empty
     }
 }
 
-// assignment operator (use copy and swap)
-const LinkedList& LinkedList::operator=(LinkedList rhs) {
-    swap(head,rhs.head);
+const LinkedList &LinkedList::operator=(LinkedList rhs) {//assignment operator
+    swap(head, rhs.head);//swap function
     return *this;
 }
 
 void LinkedList::print(ostream &os) {
     // start at the head of the list
-    Node *curr = head;
-    while (curr != nullptr) {
-        os << curr->item << endl; // use overloaded output operator to print
-        curr = curr->next; // go to next node in list
+    Node *current = head;
+    while (current != nullptr) {
+        os << current->data << endl; // use overloaded output operator to print
+        current = current->next; // go to next node in list
     }
 }
 void LinkedList::pop_head() {
     // if not an empty list
     if (head != nullptr) {
-        // save location of where head points
-        Node *curr = head;
-        // head points to next node
-        head = head->next;
-        // delete node where head originally pointed
-        delete curr;
+        Node *current = head;//loc of where head points
+        head = head->next;//head points to next node
+        delete current;//delete node to free space
     }
 }
 LinkedList::~LinkedList() {
-    // keep popping until empty list
-    while (head != nullptr) {
+    while (head != nullptr) {//pops until the list is empty
         pop_head();
     }
+}
+
+Node::Node(const Data &d, Node *n) {
+    data = d;
+    next = n;
 }

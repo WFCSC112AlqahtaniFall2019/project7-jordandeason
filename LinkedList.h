@@ -3,17 +3,17 @@
  * class for use with Data object. It is meant to be inherited for
  * more complex linked lists. (Comes with Node class.)
  */
-
 #ifndef LINKEDLIST_H
 #define LINKEDLIST_H
-#include "Data.h" //You need to create this
+
+#include "Data.h"
 
 class Node {
 public:
-    Data data; // object at node
-    Node *next; // pointer to next node
+    Data data;//obj at node
+    Node *next;//pointer to next node
 
-    Node(const Data &d, Node *n);
+    Node(const Data &d, Node *n = nullptr);
 };
 
 class LinkedList {
@@ -23,7 +23,8 @@ public:
     LinkedList();
     LinkedList(const LinkedList& list);
     const LinkedList& operator=(LinkedList rhs);
-    void print(ostream &os);
+
+    virtual void print(ostream &os);
     void pop_head();
     ~LinkedList();
 };
