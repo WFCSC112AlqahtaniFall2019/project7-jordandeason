@@ -23,5 +23,4 @@ public:
     Data(double a = 0.0, double s = 0.0, double p = 0.0, double m = 0.0);
 };
 
-
 #endif //PROJECT7_JORDANDEASON_DATA_H

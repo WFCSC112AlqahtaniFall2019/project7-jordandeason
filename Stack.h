@@ -10,11 +10,8 @@
 class Stack : public LinkedList {
 public:
     Stack();
-
     void push_head(const Data &d);
-
     bool pop_head();
-
     Data print();
 };
 

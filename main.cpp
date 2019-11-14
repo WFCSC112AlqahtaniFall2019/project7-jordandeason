@@ -11,7 +11,7 @@ using namespace std;
 int main() {
     ifstream inFile;
     ofstream outFile;
-    inFile.open("WNBAStats.csv");
+    inFile.open("../WNBAStats.csv");
     outFile.open("stacked.txt");
 
     if (!inFile.is_open()) {//enters loop if csv file isn't accessible
@@ -24,26 +24,26 @@ int main() {
     Queue q;
     SortedLinkedList link;
 
+    string AST;//assists
+    string STL;//steals
+    string PTS;//points
+    string MIN;//minutes played
+
+    //getting the chosen 4 data members
+    getline(inFile, AST, ',');
+    getline(inFile, STL, ',');
+    getline(inFile, PTS, ',');
+    getline(inFile, MIN);
+
+    //converting the data members to doubles
+    double ASTnum = stod(AST);
+    double STLnum = stod(STL);
+    double PTSnum = stod(PTS);
+    double MINnum = stod(MIN);
+
     cout << "Reading ../WNBAStats.csv…" << endl;
     //reads csv file while file is found
     while (!inFile.eof()) {
-        string AST;//assists
-        string STL;//steals
-        string PTS;//points
-        string MIN;//minutes played
-
-        //getting the chosen 4 data members
-        getline(inFile, AST, ',');
-        getline(inFile, STL, ',');
-        getline(inFile, PTS, ',');
-        getline(inFile, MIN);
-
-        //converting the data members to doubles
-        double ASTnum = stod(AST);
-        double STLnum = stod(STL);
-        double PTSnum = stod(PTS);
-        double MINnum = stod(MIN);
-
         s.push_head(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the stack
         q.enqueue_tail(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the queue
         link.insertSorted(Data(ASTnum, STLnum, PTSnum, MINnum));//adding new data to the sorted linked list

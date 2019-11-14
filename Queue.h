@@ -10,11 +10,8 @@
 class Queue : public LinkedList {
 public:
     Queue();
-
     bool dequeue_head();
-
     void enqueue_tail(const Data &d);
-
     Data print();
 
 private:
