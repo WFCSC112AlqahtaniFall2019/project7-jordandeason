@@ -67,7 +67,7 @@ int main() {
     outFile.close();
 
     cout << "Writing data in queue inserted at tail into queued" << endl;
-    outFile.open("queued");
+    outFile.open("queued.txt");
     print = true;
     while (print) {
         outFile << q.print() << endl;//printing queue
@@ -75,8 +75,8 @@ int main() {
     }
     outFile.close();
 
-    cout << "Writing data in sorted linked list sorted by MINnum into sorted" << endl;
-    outFile.open("sorted");
+    cout << "Writing data in sorted linked list sorted by MINnum into sorted.txt." << endl;
+    outFile.open("sorted.txt");
     link.print(outFile);//printing sorted linked list
     outFile.close();
     return 0;

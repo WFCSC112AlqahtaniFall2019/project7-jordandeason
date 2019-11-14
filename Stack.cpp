@@ -4,8 +4,8 @@
 
 #include "Stack.h"
 
-//constructor
-Stack::Stack() {
+Stack::Stack() {//constructor
+
     head = nullptr;
 }
 
@@ -24,8 +24,7 @@ bool Stack::pop_head() {
 
 }
 
-//inserts at head
-void Stack::push_head(const Data &d) {
+void Stack::push_head(const Data &d) {//inserts at head
     Node *newNode = new Node(d);//creates new node
     if (head == nullptr) {//insert at head
         head = newNode;
